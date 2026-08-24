@@ -5,7 +5,6 @@ export function SocialLinks() {
     { href: `mailto:${profile.email}`, label: "Email" },
     { href: profile.github, label: "GitHub", external: true },
     { href: profile.linkedin, label: "LinkedIn", external: true },
-    { href: profile.phoneHref, label: "Phone" },
   ];
 
   return (

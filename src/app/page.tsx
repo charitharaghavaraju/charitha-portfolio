@@ -25,19 +25,19 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <Section id="about" index="01" title="About">
+      <Section id="about" title="About">
         <AboutSection />
       </Section>
 
-      <Section id="experience" index="02" title="Experience">
+      <Section id="experience" title="Experience">
         <Timeline items={experience} />
       </Section>
 
-      <Section id="education" index="03" title="Education">
+      <Section id="education" title="Education">
         <EducationList />
       </Section>
 
-      <Section id="publications" index="04" title="Publications">
+      <Section id="publications" title="Publications">
         <div className="divide-y divide-line">
           {publications.map((publication, index) => (
             <PublicationItem
@@ -49,7 +49,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="projects" index="05" title="Projects">
+      <Section id="projects" title="Projects">
         <div className="divide-y divide-line">
           {projects.map((project, index) => (
             <ProjectCard key={project.repo} project={project} index={index} />
@@ -57,11 +57,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="skills" index="06" title="Skills">
+      <Section id="skills" title="Skills">
         <SkillsSection />
       </Section>
 
-      <Section id="connect" index="07" title="Connect">
+      <Section id="connect" title="Connect">
         <Reveal>
           <p className="mb-10 max-w-md text-xl leading-8 text-muted">
             Keep in touch. A role, a research idea, or a hello — I’ll read it.

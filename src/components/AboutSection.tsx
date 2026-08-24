@@ -24,14 +24,6 @@ export function AboutSection() {
                   {profile.email}
                 </a>
               </p>
-              <p>
-                <a
-                  href={profile.phoneHref}
-                  className="text-accent underline-offset-4 hover:underline"
-                >
-                  {profile.phone}
-                </a>
-              </p>
             </dd>
           </div>
           <div>

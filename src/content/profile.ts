@@ -4,8 +4,6 @@ export const profile = {
   location: "Tampere, Finland",
   relocation: "Open to Relocation",
   email: "charitharaghavaraju@gmail.com",
-  phone: "+358 41 758 1806",
-  phoneHref: "tel:+358417581806",
   github: "https://github.com/charitharaghavaraju",
   githubHandle: "charitharaghavaraju",
   linkedin: "https://www.linkedin.com/in/charitha-raghavaraju",

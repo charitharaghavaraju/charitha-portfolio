@@ -13,15 +13,15 @@ function makeStars(count: number, seed: number) {
     id: index,
     left: `${rand() * 100}%`,
     top: `${rand() * 100}%`,
-    size: rand() > 0.9 ? 2 : 1,
+    size: 2 + rand() * 3,
     delay: `${rand() * 5}s`,
-    opacity: 0.1 + rand() * 0.32,
+    opacity: 0.55 + rand() * 0.45,
   }));
 }
 
-const farStars = makeStars(70, 13);
-const midStars = makeStars(40, 97);
-const nearStars = makeStars(18, 41);
+const farStars = makeStars(48, 13);
+const midStars = makeStars(24, 97);
+const nearStars = makeStars(10, 41);
 
 type Burst = {
   id: number;
@@ -43,7 +43,7 @@ const STAR_PATH =
 function CursorStar() {
   return (
     <svg className="space-cursor-star" viewBox="0 0 24 24">
-      <path fill="#f6f8fb" d={STAR_PATH} />
+      <path fill="currentColor" d={STAR_PATH} />
     </svg>
   );
 }
@@ -145,9 +145,9 @@ export function SpaceBackground() {
     <>
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-[#0b0d11]" />
+        <div className="absolute inset-0 bg-background" />
         <div className="space-nebula space-nebula-a" />
         <div className="space-nebula space-nebula-b" />
         <div className="space-nebula space-nebula-c" />
@@ -207,8 +207,8 @@ function StarLayer({
           style={{
             left: star.left,
             top: star.top,
-            width: star.size,
-            height: star.size,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
             animationDelay: star.delay,
             ["--star-opacity" as string]: star.opacity,
           }}

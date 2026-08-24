@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { navItems, profile } from "@/content/profile";
 import { cn } from "@/lib/cn";
 
@@ -54,30 +55,33 @@ export function Header() {
         <Link
           href="/#top"
           className="font-serif text-xl tracking-tight text-foreground sm:text-2xl"
-          style={{ marginLeft: "var(--page-inset)" }}
+          style={{ marginLeft: "calc(var(--page-inset) + var(--content-pad))" }}
         >
           {profile.name.split(" ")[0]}
         </Link>
-        <nav aria-label="Primary">
-          <ul className="flex flex-wrap justify-end gap-x-5 gap-y-1">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`/#${item.id}`}
-                  onClick={() => setActive(item.id)}
-                  className={cn(
-                    "text-sm tracking-wide transition-colors sm:text-base",
-                    active === item.id
-                      ? "text-accent"
-                      : "text-muted hover:text-foreground",
-                  )}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex items-center gap-4 sm:gap-6">
+          <nav aria-label="Primary">
+            <ul className="flex flex-wrap justify-end gap-x-5 gap-y-1">
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={`/#${item.id}`}
+                    onClick={() => setActive(item.id)}
+                    className={cn(
+                      "text-sm tracking-wide transition-colors sm:text-base",
+                      active === item.id
+                        ? "text-accent"
+                        : "text-muted hover:text-foreground",
+                    )}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

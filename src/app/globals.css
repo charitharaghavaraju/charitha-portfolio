@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0d11;
+  --foreground: #f1f4f9;
+  --muted: #c5cedb;
+  --line: rgb(186 196 210 / 0.32);
+  --accent: #9ec4f5;
+  --page-inset: 2.5rem;
+  --space-y: 0px;
+  --pointer-x: 50%;
+  --pointer-y: 30%;
+  --pointer-nx: 0;
+  --pointer-ny: 0;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --page-inset: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-inset: 8rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --page-inset: 11rem;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  color-scheme: dark;
+  font-size: 18px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+  cursor: none;
+}
+
+body,
+a,
+button {
+  cursor: none;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+::selection {
+  background: var(--accent);
+  color: #0b0d11;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.space-nebula {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+}
+
+.space-nebula-a {
+  top: -16%;
+  left: -10%;
+  width: 44rem;
+  height: 30rem;
+  background: rgb(18 28 46 / 0.55);
+  transform: translate3d(
+    calc(var(--pointer-nx) * -18px),
+    calc(var(--space-y) * -0.08 + var(--pointer-ny) * -12px),
+    0
+  );
+}
+
+.space-nebula-b {
+  top: 22%;
+  right: -14%;
+  width: 38rem;
+  height: 38rem;
+  background: rgb(12 22 40 / 0.5);
+  transform: translate3d(
+    calc(var(--pointer-nx) * 22px),
+    calc(var(--space-y) * -0.14 + var(--pointer-ny) * 10px),
+    0
+  );
+}
+
+.space-nebula-c {
+  bottom: -12%;
+  left: 18%;
+  width: 34rem;
+  height: 26rem;
+  background: rgb(28 30 34 / 0.45);
+  transform: translate3d(
+    calc(var(--pointer-nx) * -12px),
+    calc(var(--space-y) * -0.2 + var(--pointer-ny) * 16px),
+    0
+  );
+}
+
+.space-milky-way {
+  position: absolute;
+  top: 30%;
+  left: -20%;
+  width: 140%;
+  height: 8rem;
+  rotate: -16deg;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.015),
+    rgb(80 100 130 / 0.05),
+    rgb(255 255 255 / 0.015),
+    transparent
+  );
+  filter: blur(16px);
+  transform: translate3d(
+    calc(var(--pointer-nx) * 10px),
+    calc(var(--space-y) * -0.1 + var(--pointer-ny) * 8px),
+    0
+  );
+}
+
+.space-cursor {
+  position: fixed;
+  top: var(--pointer-y);
+  left: var(--pointer-x);
+  z-index: 80;
+  width: clamp(0.52cm, 1.15vw, 0.82cm);
+  height: clamp(0.52cm, 1.15vw, 0.82cm);
+  pointer-events: none;
+  translate: -50% -50%;
+}
+
+.space-cursor-star {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter:
+    drop-shadow(0 0 0.1cm rgb(242 246 252 / 0.9))
+    drop-shadow(0 0 0.28cm rgb(160 180 210 / 0.55));
+}
+
+.space-cursor-trail {
+  z-index: 79;
+}
+
+.space-cursor-trail .space-cursor-star {
+  filter: drop-shadow(0 0 0.06cm rgb(200 214 230 / 0.35));
+}
+
+.space-layer-far {
+  transform: translate3d(
+    calc(var(--pointer-nx) * -8px),
+    calc(var(--space-y) * -0.04 + var(--pointer-ny) * -6px),
+    0
+  );
+}
+
+.space-layer-mid {
+  transform: translate3d(
+    calc(var(--pointer-nx) * 16px),
+    calc(var(--space-y) * -0.1 + var(--pointer-ny) * 10px),
+    0
+  );
+}
+
+.space-layer-near {
+  transform: translate3d(
+    calc(var(--pointer-nx) * 28px),
+    calc(var(--space-y) * -0.18 + var(--pointer-ny) * 16px),
+    0
+  );
+}
+
+.space-star {
+  position: absolute;
+  border-radius: 9999px;
+  background: #c8ced8;
+  opacity: var(--star-opacity);
+  animation: twinkle 4.6s ease-in-out infinite;
+}
+
+.space-burst {
+  position: absolute;
+  width: 72px;
+  height: 1px;
+  margin-left: -4px;
+  margin-top: -1px;
+  background: linear-gradient(90deg, #cfd5de, rgb(90 110 140 / 0.08), transparent);
+  box-shadow: 0 0 6px rgb(90 110 140 / 0.25);
+  animation: shoot 0.75s ease-out forwards;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: var(--star-opacity);
+  }
+  50% {
+    opacity: 0.04;
+  }
+}
+
+@keyframes shoot {
+  from {
+    opacity: 1;
+    translate: 0 0;
+  }
+  to {
+    opacity: 0;
+    translate: 160px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .space-star,
+  .space-burst {
+    animation: none;
+  }
+
+  .space-nebula-a,
+  .space-nebula-b,
+  .space-nebula-c,
+  .space-milky-way,
+  .space-layer-far,
+  .space-layer-mid,
+  .space-layer-near {
+    transform: none;
+  }
+}

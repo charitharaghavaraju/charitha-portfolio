@@ -1,3 +1,5 @@
+import { PlanetMarks } from "@/components/CelestialMarks";
+import { ScrollCue } from "@/components/ScrollCue";
 import { profile } from "@/content/profile";
 
 export function Hero() {
@@ -6,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="flex min-h-[calc(100svh-3.5rem)] flex-col justify-end pb-16"
+      className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-end pb-28"
     >
       <h1 className="font-serif text-[clamp(3.75rem,15vw,9.5rem)] leading-[0.86] tracking-tight">
         {firstName}
@@ -17,12 +19,14 @@ export function Hero() {
         {profile.role}
       </p>
       <a
-        href="#about"
+        href={profile.resume}
+        download={profile.resumeFileName}
         className="mt-16 inline-flex w-fit items-center gap-3 text-base text-muted transition-colors hover:text-accent"
       >
-        <span className="block h-8 w-px bg-accent" />
-        Scroll
+        <PlanetMarks className="resume-planets" />
+        Download Resume
       </a>
+      <ScrollCue />
     </section>
   );
 }

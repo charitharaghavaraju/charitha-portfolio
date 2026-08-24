@@ -11,10 +11,10 @@
   --star-color: #3a4d6b;
   --star-glow: rgb(70 100 150 / 0.55);
   --cursor-star: #24344c;
-  --nebula-a: rgb(170 200 240 / 0.48);
-  --nebula-b: rgb(255 228 205 / 0.38);
-  --nebula-c: rgb(200 214 232 / 0.42);
-  --milky: rgb(90 120 160 / 0.12);
+  --nebula-a: rgb(70 115 180 / 0.32);
+  --nebula-b: rgb(210 130 70 / 0.26);
+  --nebula-c: rgb(120 140 175 / 0.28);
+  --milky: rgb(255 214 180 / 0.08);
   --page-inset: 2.5rem;
   --content-pad: 1.5rem;
   --space-y: 0px;
@@ -33,10 +33,6 @@ html.dark {
   --star-color: #f4f7fb;
   --star-glow: rgb(220 232 255 / 0.9);
   --cursor-star: #f6f8fb;
-  --nebula-a: rgb(18 28 46 / 0.55);
-  --nebula-b: rgb(12 22 40 / 0.5);
-  --nebula-c: rgb(28 30 34 / 0.45);
-  --milky: rgb(255 255 255 / 0.06);
 }
 
 @media (min-width: 640px) {
@@ -268,6 +264,119 @@ body {
   }
 }
 
+.scroll-fly {
+  position: absolute;
+  left: calc(50vw - var(--page-inset) - var(--content-pad));
+  bottom: 1.6rem;
+  z-index: 5;
+  display: flex;
+  width: 5.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: #e08a3c;
+  translate: -50% 0;
+}
+
+html.dark .scroll-fly {
+  color: #e8eef6;
+}
+
+.scroll-fly-body {
+  width: 3.1rem;
+  height: 3.1rem;
+  animation: scroll-fly 2.1s ease-in-out infinite;
+}
+
+.scroll-fly-sun {
+  filter:
+    drop-shadow(0 0 8px rgb(224 138 60 / 0.95))
+    drop-shadow(0 0 22px rgb(255 190 110 / 0.7));
+}
+
+.scroll-fly-moon {
+  display: none;
+  filter:
+    drop-shadow(0 0 8px rgb(232 238 246 / 0.95))
+    drop-shadow(0 0 20px rgb(170 190 220 / 0.65));
+}
+
+html.dark .scroll-fly-sun {
+  display: none;
+}
+
+html.dark .scroll-fly-moon {
+  display: block;
+}
+
+.scroll-fly-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--foreground);
+  transition: opacity 0.35s ease;
+}
+
+.scroll-fly:hover .scroll-fly-body {
+  animation-duration: 0.9s;
+}
+
+.scroll-fly.is-scrolled .scroll-fly-label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.scroll-fly.is-scrolled .scroll-fly-body,
+.scroll-fly.is-scrolled:hover .scroll-fly-body {
+  animation: none;
+  transform: none;
+  opacity: 1;
+}
+
+@keyframes scroll-fly {
+  0% {
+    transform: translateY(0) scale(0.92);
+    opacity: 0.75;
+  }
+  40% {
+    transform: translateY(0.85rem) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(1.7rem) scale(0.9);
+    opacity: 0.45;
+  }
+}
+
+.resume-planets {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+}
+
+.resume-planet {
+  display: block;
+  flex-shrink: 0;
+}
+
+.resume-planet-a {
+  width: 0.95rem;
+  height: 0.95rem;
+  opacity: 0.85;
+}
+
+.resume-planet-b {
+  width: 1.2rem;
+  height: 0.9rem;
+  color: #d27a3a;
+}
+
+.resume-planet-c {
+  width: 0.72rem;
+  height: 0.72rem;
+  opacity: 0.75;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -280,7 +389,9 @@ body {
   }
 
   .space-star,
-  .space-burst {
+  .space-burst,
+  .scroll-fly-sun,
+  .scroll-fly-moon {
     animation: none;
   }
 

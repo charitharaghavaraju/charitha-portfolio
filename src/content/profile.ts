@@ -7,6 +7,8 @@ export const profile = {
   github: "https://github.com/charitharaghavaraju",
   githubHandle: "charitharaghavaraju",
   linkedin: "https://www.linkedin.com/in/charitha-raghavaraju",
+  resume: "/Charitha-Raghavaraju-Resume.pdf",
+  resumeFileName: "Charitha-Raghavaraju-Resume.pdf",
   tagline:
     "Machine learning researcher and engineer working across applied research and production AI.",
   about: [

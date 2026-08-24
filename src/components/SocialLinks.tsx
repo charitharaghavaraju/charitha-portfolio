@@ -5,6 +5,11 @@ export function SocialLinks() {
     { href: `mailto:${profile.email}`, label: "Email" },
     { href: profile.github, label: "GitHub", external: true },
     { href: profile.linkedin, label: "LinkedIn", external: true },
+    {
+      href: profile.resume,
+      label: "Resume",
+      download: profile.resumeFileName,
+    },
   ];
 
   return (
@@ -15,6 +20,9 @@ export function SocialLinks() {
             href={link.href}
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            {...("download" in link && link.download
+              ? { download: link.download }
               : {})}
             className="text-accent underline-offset-4 hover:underline"
           >

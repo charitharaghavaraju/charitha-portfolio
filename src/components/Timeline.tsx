@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/Reveal";
+import { StarMark } from "@/components/StarMark";
 import type { ExperienceItem } from "@/content/experience";
 import { cn } from "@/lib/cn";
 
@@ -21,7 +22,7 @@ export function Timeline({ items }: TimelineProps) {
         const open = openKey === key;
         return (
           <li key={key} className="relative pl-8">
-            <span className="absolute top-2 -left-px h-2 w-2 -translate-x-1/2 rounded-full bg-accent" />
+            <StarMark className="absolute top-2 -left-px h-3.5 w-3.5 -translate-x-1/2 text-accent" />
             <Reveal delay={index * 70}>
               <TimelineItem
                 item={item}
@@ -79,7 +80,13 @@ function TimelineItem({
         <div ref={panelRef} className="pt-4">
           <ul className="space-y-3 text-base leading-8 text-muted">
             {item.bullets.map((bullet) => (
-              <li key={bullet.slice(0, 48)}>{bullet}</li>
+              <li
+                key={bullet.slice(0, 48)}
+                className="grid grid-cols-[auto_1fr] gap-x-3"
+              >
+                <StarMark className="mt-[0.7em] h-3.5 w-3.5 shrink-0 text-accent" />
+                <span>{bullet}</span>
+              </li>
             ))}
           </ul>
           <p className="mt-4 text-sm tracking-wide text-muted">

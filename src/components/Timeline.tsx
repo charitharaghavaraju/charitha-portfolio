@@ -14,11 +14,11 @@ export function Timeline({ items }: TimelineProps) {
       {items.map((item, index) => (
         <li key={`${item.company}-${item.start}`} className="relative">
           <article className="grid gap-8 md:grid-cols-[minmax(15rem,20rem)_1fr] md:gap-12 lg:grid-cols-[22rem_1fr]">
-            <header className="sticky top-24 self-start md:top-28">
+            <header className="self-start md:sticky md:top-28">
               <p className="font-mono text-sm tracking-wide text-accent">
                 {item.start} — {item.end}
               </p>
-              <h3 className="mt-2 font-serif text-3xl tracking-tight">
+              <h3 className="mt-2 font-serif text-3xl tracking-tight break-words">
                 {item.title}
               </h3>
               <p className="mt-2 text-base text-muted">
@@ -35,7 +35,7 @@ export function Timeline({ items }: TimelineProps) {
                     className="grid grid-cols-[auto_1fr] gap-x-3"
                   >
                     <StarMark className="mt-[0.7em] h-3.5 w-3.5 shrink-0 text-accent" />
-                    <span>{bullet}</span>
+                    <span className="min-w-0 break-words">{bullet}</span>
                   </li>
                 ))}
               </ul>

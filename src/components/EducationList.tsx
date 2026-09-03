@@ -11,7 +11,7 @@ export function EducationList() {
               <p className="font-mono text-sm text-accent">
                 {item.start} — {item.end}
               </p>
-              <h3 className="mt-2 font-serif text-3xl tracking-tight">
+              <h3 className="mt-2 font-serif text-3xl tracking-tight break-words">
                 {item.degree}
               </h3>
               <p className="mt-2 text-base text-muted">

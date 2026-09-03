@@ -17,6 +17,7 @@
   --milky: rgb(255 214 180 / 0.08);
   --page-inset: 2rem;
   --content-pad: 1.5rem;
+  --header-height: 4.5rem;
   --space-y: 0px;
   --pointer-x: 50%;
   --pointer-y: 30%;
@@ -39,6 +40,10 @@ html.dark {
   :root {
     --page-inset: 3rem;
     --content-pad: 2rem;
+  }
+
+  html {
+    font-size: 18px;
   }
 }
 
@@ -69,9 +74,9 @@ html.dark {
 
 html {
   color-scheme: light;
-  font-size: 18px;
+  font-size: 16px;
   scroll-behavior: smooth;
-  scroll-padding-top: 6.5rem;
+  scroll-padding-top: calc(var(--header-height) + 0.75rem);
   cursor: none;
 }
 
@@ -264,18 +269,29 @@ body {
   }
 }
 
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .scroll-fly {
-  position: absolute;
-  left: calc(50vw - var(--page-inset) - var(--content-pad));
-  bottom: 1.6rem;
+  position: relative;
+  left: auto;
+  bottom: auto;
   z-index: 5;
   display: flex;
   width: 5.5rem;
   flex-direction: column;
   align-items: center;
   gap: 0.35rem;
+  margin: 2.25rem auto 0;
   color: #e08a3c;
-  translate: -50% 0;
+  translate: none;
 }
 
 html.dark .scroll-fly {
@@ -344,6 +360,23 @@ html.dark .scroll-fly-moon {
   100% {
     transform: translateY(1.7rem) scale(0.9);
     opacity: 0.45;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 760px) {
+  .hero {
+    min-height: calc(100dvh - var(--header-height));
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .scroll-fly {
+    position: absolute;
+    left: calc(50vw - var(--page-inset) - var(--content-pad));
+    bottom: 1.6rem;
+    margin: 0;
+    translate: -50% 0;
   }
 }
 

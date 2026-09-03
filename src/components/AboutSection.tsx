@@ -19,7 +19,7 @@ export function AboutSection() {
               <p>
                 <a
                   href={`mailto:${profile.email}`}
-                  className="text-accent underline-offset-4 hover:underline"
+                  className="break-all text-accent underline-offset-4 hover:underline"
                 >
                   {profile.email}
                 </a>

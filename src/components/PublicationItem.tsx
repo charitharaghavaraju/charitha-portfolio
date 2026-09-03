@@ -11,7 +11,7 @@ export function PublicationItem({ publication, index }: PublicationItemProps) {
     <Reveal delay={index * 80} className="py-8 first:pt-0 last:pb-0">
       <article>
         <p className="font-mono text-sm text-accent">{publication.year}</p>
-        <h3 className="mt-2 font-serif text-2xl leading-snug tracking-tight">
+        <h3 className="mt-2 font-serif text-2xl leading-snug tracking-tight break-words">
           {publication.title}
         </h3>
         <p className="mt-3 text-base leading-8 text-muted">

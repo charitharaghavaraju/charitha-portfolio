@@ -24,11 +24,9 @@ export function Footer() {
       <div className="mt-16 flex flex-col gap-6 border-t border-line pt-10">
         <SocialLinks />
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3 text-sm text-muted">
-          <p>
-            © {new Date().getFullYear()} {profile.name}
-          </p>
+          <p> © {profile.name}</p>
           <p className="tracking-[0.18em] text-accent uppercase">
-            {profile.location} · {profile.relocation}
+            {profile.location}
           </p>
           <a
             href="/#top"

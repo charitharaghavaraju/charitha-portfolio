@@ -13,7 +13,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <p className="font-mono text-sm text-accent">
           {String(index + 1).padStart(2, "0")}
         </p>
-        <h3 className="mt-2 font-serif text-3xl tracking-tight">
+        <h3 className="mt-2 font-serif text-3xl tracking-tight break-words">
           {project.repo ? (
             <a
               href={project.repo}

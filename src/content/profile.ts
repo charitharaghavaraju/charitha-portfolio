@@ -2,7 +2,6 @@ export const profile = {
   name: "Charitha Raghavaraju",
   role: "AI & Machine Learning Engineer",
   location: "Tampere, Finland",
-  relocation: "Open to Relocation",
   email: "charitharaghavaraju@gmail.com",
   github: "https://github.com/charitharaghavaraju",
   githubHandle: "charitharaghavaraju",

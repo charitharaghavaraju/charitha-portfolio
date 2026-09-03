@@ -7,11 +7,8 @@ export function Hero() {
   const [firstName, ...lastNames] = profile.name.split(" ");
 
   return (
-    <section
-      id="top"
-      className="relative flex h-[calc(100dvh-4.5rem)] min-h-[calc(100dvh-4.5rem)] flex-col justify-center"
-    >
-      <h1 className="font-serif text-[clamp(2.75rem,11vw,6.75rem)] leading-[0.9] tracking-tight">
+    <section id="top" className="hero">
+      <h1 className="max-w-full break-words font-serif text-[clamp(2.15rem,10vw,6.75rem)] leading-[0.92] tracking-tight">
         {firstName}
         <br />
         <span className="text-accent">{lastNames.join(" ")}</span>
@@ -19,7 +16,7 @@ export function Hero() {
       <p className="mt-6 font-mono text-sm tracking-wide text-accent">
         {profile.role}
       </p>
-      <p className="mt-3 max-w-lg text-xl leading-8 text-muted">
+      <p className="mt-3 max-w-lg text-lg leading-7 text-muted sm:text-xl sm:leading-8">
         {profile.tagline}
       </p>
       <div className="mt-8 flex flex-wrap items-center gap-5">

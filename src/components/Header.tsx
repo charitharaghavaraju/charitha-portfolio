@@ -1,14 +1,34 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { navItems, profile } from "@/content/profile";
 import { cn } from "@/lib/cn";
 
 export function Header() {
+  const headerRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState<(typeof navItems)[number]["id"] | "">("");
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const node = headerRef.current;
+    if (!node) {
+      return;
+    }
+
+    const setHeight = () => {
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${node.getBoundingClientRect().height}px`,
+      );
+    };
+
+    setHeight();
+    const observer = new ResizeObserver(setHeight);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -44,6 +64,7 @@ export function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={cn(
         "sticky top-0 z-40 border-b transition-colors",
         scrolled
@@ -51,17 +72,22 @@ export function Header() {
           : "border-transparent bg-transparent",
       )}
     >
-      <div className="flex w-full items-center justify-between gap-4 py-4 pr-8 sm:gap-6 sm:pr-12">
+      <div
+        className="flex w-full items-center justify-between gap-3 py-4 md:gap-6"
+        style={{
+          paddingLeft: "calc(var(--page-inset) + var(--content-pad))",
+          paddingRight: "calc(var(--page-inset) + var(--content-pad))",
+        }}
+      >
         <Link
           href="/#top"
-          className="font-serif text-xl tracking-tight text-foreground sm:text-2xl"
-          style={{ marginLeft: "calc(var(--page-inset) + var(--content-pad))" }}
+          className="min-w-0 shrink font-serif text-xl tracking-tight text-foreground md:text-2xl"
         >
           {profile.name.split(" ")[0]}
           <span className="text-accent">.</span>
         </Link>
-        <div className="flex items-center gap-3 sm:gap-5">
-          <nav aria-label="Primary">
+        <div className="flex shrink-0 items-center gap-3 md:gap-5">
+          <nav className="hidden md:block" aria-label="Primary">
             <ul className="flex flex-wrap justify-end gap-x-4 gap-y-1 sm:gap-x-5">
               {navItems.map((item) => (
                 <li key={item.id}>

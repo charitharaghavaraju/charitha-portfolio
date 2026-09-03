@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { AboutSection } from "@/components/AboutSection";
-import { ContactForm } from "@/components/ContactForm";
 import { EducationList } from "@/components/EducationList";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { ProjectCard } from "@/components/ProjectCard";
 import { PublicationItem } from "@/components/PublicationItem";
-import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { SkillsSection } from "@/components/SkillsSection";
 import { Timeline } from "@/components/Timeline";
@@ -52,24 +50,13 @@ export default function HomePage() {
       <Section id="projects" title="Projects">
         <div className="divide-y divide-line">
           {projects.map((project, index) => (
-            <ProjectCard key={project.repo} project={project} index={index} />
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </Section>
 
       <Section id="skills" title="Skills">
         <SkillsSection />
-      </Section>
-
-      <Section id="connect" title="Connect">
-        <Reveal>
-          <p className="mb-10 max-w-md text-xl leading-8 text-muted">
-            Keep in touch. A role, a research idea, or a hello — I’ll read it.
-          </p>
-        </Reveal>
-        <Reveal delay={80}>
-          <ContactForm />
-        </Reveal>
       </Section>
 
       <Footer />

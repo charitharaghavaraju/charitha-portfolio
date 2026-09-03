@@ -1,26 +1,130 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
-import { sendMessage, type ContactState } from "@/app/actions/contact";
+import { useState, type FormEvent } from "react";
+import { sendMessage } from "@/app/actions/contact";
+import { StarMark } from "@/components/StarMark";
+import { profile } from "@/content/profile";
 import { cn } from "@/lib/cn";
-
-const initialState: ContactState = { ok: false, message: "" };
 
 const fieldClassName =
   "w-full border-b border-line bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted focus:border-accent";
 
-export function ContactForm() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [state, formAction, pending] = useActionState(sendMessage, initialState);
+function readDraft(formData: FormData) {
+  return {
+    name: String(formData.get("name") ?? "").trim(),
+    email: String(formData.get("email") ?? "").trim(),
+    message: String(formData.get("message") ?? "").trim(),
+  };
+}
 
-  useEffect(() => {
-    if (state.ok) {
-      formRef.current?.reset();
+async function sendFromBrowser(name: string, email: string, message: string) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+
+  try {
+    const response = await fetch(
+      `https://formsubmit.co/ajax/${encodeURIComponent(profile.email)}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _subject: `Portfolio message from ${name}`,
+          _template: "box",
+          _captcha: false,
+        }),
+        signal: controller.signal,
+      },
+    );
+    const result: unknown = await response.json().catch(() => null);
+    const payload =
+      result && typeof result === "object"
+        ? (result as { success?: boolean | string; message?: string })
+        : null;
+    const success =
+      payload?.success === true || payload?.success === "true";
+    const text = typeof payload?.message === "string" ? payload.message : "";
+
+    if (!response.ok || !success) {
+      return { ok: false as const, message: text };
     }
-  }, [state]);
+
+    if (/confirm|activat/i.test(text)) {
+      return {
+        ok: true as const,
+        message:
+          "Check your inbox to activate the form, then send this once more.",
+      };
+    }
+
+    return {
+      ok: true as const,
+      message: "Thanks — I’ll get back to you soon.",
+    };
+  } catch {
+    return { ok: false as const, message: "" };
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+export function ContactForm() {
+  const [pending, setPending] = useState(false);
+  const [status, setStatus] = useState({ ok: false, message: "" });
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setPending(true);
+    setStatus({ ok: false, message: "" });
+
+    try {
+      const result = await sendMessage({ ok: false, message: "" }, formData);
+
+      if (!result.ok) {
+        setStatus(result);
+        return;
+      }
+
+      if (!result.mailto) {
+        setStatus(result);
+        form.reset();
+        return;
+      }
+
+      const draft = readDraft(formData);
+      const delivered = await sendFromBrowser(
+        draft.name,
+        draft.email,
+        draft.message,
+      );
+
+      if (delivered.ok) {
+        setStatus(delivered);
+        form.reset();
+        return;
+      }
+
+      window.location.href = result.mailto;
+      setStatus({
+        ok: true,
+        message: "Opening your email app to send this.",
+      });
+      form.reset();
+    } finally {
+      setPending(false);
+    }
+  }
 
   return (
-    <form ref={formRef} action={formAction} className="max-w-md space-y-6">
+    <form onSubmit={onSubmit} className="max-w-md space-y-6">
       <label className="sr-only" htmlFor="website">
         Website
       </label>
@@ -91,12 +195,8 @@ export function ContactForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={pending}
-        className="inline-flex items-center gap-3 text-base text-muted transition-colors hover:text-accent disabled:opacity-50"
-      >
-        <span className="block h-px w-8 bg-accent" />
+      <button type="submit" disabled={pending} className="talk-button">
+        <StarMark className="h-3.5 w-3.5" />
         {pending ? "Sending" : "Let's Talk"}
       </button>
 
@@ -104,10 +204,10 @@ export function ContactForm() {
         aria-live="polite"
         className={cn(
           "min-h-5 text-base",
-          state.ok ? "text-accent" : "text-muted",
+          status.ok ? "text-accent" : "text-muted",
         )}
       >
-        {state.message}
+        {status.message}
       </p>
     </form>
   );

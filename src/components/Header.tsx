@@ -51,17 +51,18 @@ export function Header() {
           : "border-transparent bg-transparent",
       )}
     >
-      <div className="flex w-full items-center justify-between gap-6 py-4 pr-8 sm:pr-12">
+      <div className="flex w-full items-center justify-between gap-4 py-4 pr-8 sm:gap-6 sm:pr-12">
         <Link
           href="/#top"
           className="font-serif text-xl tracking-tight text-foreground sm:text-2xl"
           style={{ marginLeft: "calc(var(--page-inset) + var(--content-pad))" }}
         >
           {profile.name.split(" ")[0]}
+          <span className="text-accent">.</span>
         </Link>
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-3 sm:gap-5">
           <nav aria-label="Primary">
-            <ul className="flex flex-wrap justify-end gap-x-5 gap-y-1">
+            <ul className="flex flex-wrap justify-end gap-x-4 gap-y-1 sm:gap-x-5">
               {navItems.map((item) => (
                 <li key={item.id}>
                   <a
@@ -80,6 +81,9 @@ export function Header() {
               ))}
             </ul>
           </nav>
+          <a href="/#connect" className="talk-button talk-button-sm whitespace-nowrap">
+            Let's Talk
+          </a>
           <ThemeToggle />
         </div>
       </div>

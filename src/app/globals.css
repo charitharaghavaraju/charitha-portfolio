@@ -15,7 +15,7 @@
   --nebula-b: rgb(210 130 70 / 0.26);
   --nebula-c: rgb(120 140 175 / 0.28);
   --milky: rgb(255 214 180 / 0.08);
-  --page-inset: 2.5rem;
+  --page-inset: 2rem;
   --content-pad: 1.5rem;
   --space-y: 0px;
   --pointer-x: 50%;
@@ -37,22 +37,22 @@ html.dark {
 
 @media (min-width: 640px) {
   :root {
-    --page-inset: 4rem;
-    --content-pad: 2.25rem;
+    --page-inset: 3rem;
+    --content-pad: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --page-inset: 8rem;
-    --content-pad: 2.75rem;
+    --page-inset: 4.5rem;
+    --content-pad: 2.25rem;
   }
 }
 
 @media (min-width: 1280px) {
   :root {
-    --page-inset: 11rem;
-    --content-pad: 3.25rem;
+    --page-inset: 5.5rem;
+    --content-pad: 2.5rem;
   }
 }
 
@@ -377,6 +377,40 @@ html.dark .scroll-fly-moon {
   opacity: 0.75;
 }
 
+.talk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid var(--accent);
+  border-radius: 9999px;
+  background: var(--accent);
+  color: var(--background);
+  padding: 0.8rem 1.55rem;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.talk-button:hover:not(:disabled) {
+  box-shadow: 0 0 22px var(--star-glow);
+  transform: translateY(-1px);
+}
+
+.talk-button:disabled {
+  opacity: 0.5;
+}
+
+.talk-button-sm {
+  gap: 0.35rem;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -401,7 +435,8 @@ html.dark .scroll-fly-moon {
   .space-milky-way,
   .space-layer-far,
   .space-layer-mid,
-  .space-layer-near {
+  .space-layer-near,
+  .talk-button:hover:not(:disabled) {
     transform: none;
   }
 }

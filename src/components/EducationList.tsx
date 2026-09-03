@@ -19,9 +19,9 @@ export function EducationList() {
                 <br />
                 {item.school}, {item.location}
               </p>
-              <p className="mt-3 text-base text-muted">GPA {item.gpa}</p>
+              <p className="mt-3 text-base text-muted">GPA: {item.gpa}</p>
               <p className="mt-4 text-base leading-8 text-muted">
-                <span className="text-foreground">Thesis. </span>
+                <span className="text-foreground">Thesis: </span>
                 {item.thesis}
               </p>
             </article>

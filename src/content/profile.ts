@@ -1,6 +1,6 @@
 export const profile = {
   name: "Charitha Raghavaraju",
-  role: "Machine Learning Engineer",
+  role: "AI & Machine Learning Engineer",
   location: "Tampere, Finland",
   relocation: "Open to Relocation",
   email: "charitharaghavaraju@gmail.com",
@@ -25,10 +25,9 @@ export const profile = {
 
 export const navItems = [
   { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
+  /* { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" }, */
   { id: "publications", label: "Publications" },
   { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "connect", label: "Connect" },
+  /* { id: "skills", label: "Skills" }, */
 ] as const;

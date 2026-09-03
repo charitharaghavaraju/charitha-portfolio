@@ -12,7 +12,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <HashScroll />
       <Header />
       <main
-        className="relative z-10 w-full max-w-4xl pr-8 sm:pr-12"
+        className="relative z-10 w-full max-w-[70rem] pr-8 sm:pr-12"
         style={{
           marginLeft: "var(--page-inset)",
           paddingLeft: "var(--content-pad)",

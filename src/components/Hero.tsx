@@ -1,5 +1,6 @@
 import { PlanetMarks } from "@/components/CelestialMarks";
 import { ScrollCue } from "@/components/ScrollCue";
+import { StarMark } from "@/components/StarMark";
 import { profile } from "@/content/profile";
 
 export function Hero() {
@@ -8,20 +9,35 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-end pb-28"
+      className="relative flex h-[calc(100dvh-4.5rem)] min-h-[calc(100dvh-4.5rem)] flex-col justify-center"
     >
-      <h1 className="font-serif text-[clamp(3.75rem,15vw,9.5rem)] leading-[0.86] tracking-tight">
+      <h1 className="font-serif text-[clamp(2.75rem,11vw,6.75rem)] leading-[0.9] tracking-tight">
         {firstName}
         <br />
         <span className="text-accent">{lastNames.join(" ")}</span>
       </h1>
-      <p className="mt-8 max-w-lg text-xl leading-8 text-muted">
+      <p className="mt-6 font-mono text-sm tracking-wide text-accent">
         {profile.role}
       </p>
+      <p className="mt-3 max-w-lg text-xl leading-8 text-muted">
+        {profile.tagline}
+      </p>
+      <div className="mt-8 flex flex-wrap items-center gap-5">
+        <a
+          href="/#experience"
+          className="text-base text-muted transition-colors hover:text-accent"
+        >
+          View work
+        </a>
+        <a href="/#connect" className="talk-button">
+          <StarMark className="h-3.5 w-3.5" />
+          Let's Talk
+        </a>
+      </div>
       <a
         href={profile.resume}
         download={profile.resumeFileName}
-        className="mt-16 inline-flex w-fit items-center gap-3 text-base text-muted transition-colors hover:text-accent"
+        className="mt-6 inline-flex w-fit items-center gap-3 text-base text-muted transition-colors hover:text-accent"
       >
         <PlanetMarks className="resume-planets" />
         Download Resume

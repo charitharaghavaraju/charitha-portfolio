@@ -24,15 +24,6 @@ export function AboutSection() {
                   {profile.email}
                 </a>
               </p>
-              <p>
-                <a
-                  href={profile.resume}
-                  download={profile.resumeFileName}
-                  className="text-accent underline-offset-4 hover:underline"
-                >
-                  Resume
-                </a>
-              </p>
             </dd>
           </div>
           <div>

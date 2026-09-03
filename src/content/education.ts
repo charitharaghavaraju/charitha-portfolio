@@ -16,7 +16,7 @@ export const education: EducationItem[] = [
     school: "Tampere University",
     location: "Tampere, Finland",
     start: "2021",
-    end: "2024",
+    end: "2023",
     gpa: "4.19 / 5.00",
     thesis:
       "Enhancing Domain-Specific Automated Audio Captioning: Adaptation Techniques and Transfer Learning",

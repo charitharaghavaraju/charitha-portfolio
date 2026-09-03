@@ -6,6 +6,7 @@ import { profile } from "@/content/profile";
 export type ContactState = {
   ok: boolean;
   message: string;
+  mailto?: string;
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -21,6 +22,12 @@ function escapeHtml(value: string) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function buildMailto(name: string, email: string, message: string) {
+  const subject = `Portfolio message from ${name}`;
+  const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+  return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 export async function sendMessage(
@@ -48,11 +55,14 @@ export async function sendMessage(
     return { ok: false, message: "Please write a short message." };
   }
 
+  const mailto = buildMailto(name, email, message);
   const apiKey = process.env.RESEND_API_KEY;
+
   if (!apiKey) {
     return {
-      ok: false,
-      message: `The form isn’t sending yet. Email me at ${profile.email}.`,
+      ok: true,
+      mailto,
+      message: "Opening your email app to send this.",
     };
   }
 
@@ -78,8 +88,9 @@ export async function sendMessage(
 
   if (error) {
     return {
-      ok: false,
-      message: `Couldn’t send just now. Email me at ${profile.email}.`,
+      ok: true,
+      mailto,
+      message: "Opening your email app to send this.",
     };
   }
 

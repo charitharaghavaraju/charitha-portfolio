@@ -2,7 +2,6 @@ import { profile } from "@/content/profile";
 
 export function SocialLinks() {
   const links = [
-    { href: `mailto:${profile.email}`, label: "Email" },
     { href: profile.github, label: "GitHub", external: true },
     { href: profile.linkedin, label: "LinkedIn", external: true },
     {

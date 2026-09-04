@@ -10,7 +10,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <Reveal delay={index * 80} className="py-8 first:pt-0 last:pb-0">
       <article className="group">
-        <p className="font-mono text-sm text-accent">
+        <p className="font-mono text-sm text-warm">
           {String(index + 1).padStart(2, "0")}
         </p>
         <h3 className="mt-2 font-serif text-3xl tracking-tight break-words">
@@ -28,9 +28,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           )}
         </h3>
         <p className="mt-3 text-base leading-8 text-muted">{project.summary}</p>
-        <p className="mt-4 text-sm tracking-wide text-muted">
+        <p className="mt-4 text-sm tracking-wide text-accent">
           {project.tags.join(" · ")}
-          {project.repo ? null : " · Private repository"}
+          {project.repo ? null : " "}
         </p>
       </article>
     </Reveal>

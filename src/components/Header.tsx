@@ -72,13 +72,7 @@ export function Header() {
           : "border-transparent bg-transparent",
       )}
     >
-      <div
-        className="flex w-full items-center justify-between gap-3 py-4 md:gap-6"
-        style={{
-          paddingLeft: "calc(var(--page-inset) + var(--content-pad))",
-          paddingRight: "calc(var(--page-inset) + var(--content-pad))",
-        }}
-      >
+      <div className="page-column flex items-center justify-between gap-3 py-4 md:gap-6">
         <Link
           href="/#top"
           className="min-w-0 shrink font-serif text-xl tracking-tight text-foreground md:text-2xl"
@@ -107,7 +101,10 @@ export function Header() {
               ))}
             </ul>
           </nav>
-          <a href="/#connect" className="talk-button talk-button-sm whitespace-nowrap">
+          <a
+            href={`mailto:${profile.email}`}
+            className="talk-button talk-button-sm whitespace-nowrap"
+          >
             Let's Talk
           </a>
           <ThemeToggle />

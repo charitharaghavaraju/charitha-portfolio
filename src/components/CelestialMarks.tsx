@@ -26,6 +26,23 @@ export function MoonMark({ className }: { className?: string }) {
   );
 }
 
+export function SaturnMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 22 16" className={className} aria-hidden="true">
+      <ellipse
+        cx="11"
+        cy="8"
+        rx="8"
+        ry="2.1"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+      />
+      <circle cx="11" cy="8" r="4.4" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function PlanetMarks({ className }: { className?: string }) {
   return (
     <span className={className} aria-hidden="true">
@@ -42,18 +59,7 @@ export function PlanetMarks({ className }: { className?: string }) {
           opacity="0.55"
         />
       </svg>
-      <svg viewBox="0 0 22 16" className="resume-planet resume-planet-b">
-        <ellipse
-          cx="11"
-          cy="8"
-          rx="8"
-          ry="2.1"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.3"
-        />
-        <circle cx="11" cy="8" r="4.4" fill="currentColor" />
-      </svg>
+      <SaturnMark className="resume-planet resume-planet-b" />
       <svg viewBox="0 0 14 14" className="resume-planet resume-planet-c">
         <circle cx="7" cy="7" r="5.4" fill="currentColor" />
         <circle cx="5.2" cy="6" r="1.2" fill="var(--background)" opacity="0.45" />

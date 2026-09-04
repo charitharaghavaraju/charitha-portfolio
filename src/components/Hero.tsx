@@ -13,7 +13,7 @@ export function Hero() {
         <br />
         <span className="text-accent">{lastNames.join(" ")}</span>
       </h1>
-      <p className="mt-6 font-mono text-sm tracking-wide text-accent">
+      <p className="mt-6 font-mono text-lg tracking-wide text-warm sm:text-xl">
         {profile.role}
       </p>
       <p className="mt-3 max-w-lg text-lg leading-7 text-muted sm:text-xl sm:leading-8">
@@ -26,7 +26,7 @@ export function Hero() {
         >
           View work
         </a>
-        <a href="/#connect" className="talk-button">
+        <a href={`mailto:${profile.email}`} className="talk-button">
           <StarMark className="h-3.5 w-3.5" />
           Let's Talk
         </a>

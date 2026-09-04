@@ -13,18 +13,9 @@ export function AboutSection() {
         <dl className="grid gap-8 pt-6 sm:grid-cols-2">
           <div>
             <dt className="font-mono text-sm tracking-wide text-accent">
-              Contact
+              Location
             </dt>
-            <dd className="mt-3 space-y-1 text-base">
-              <p>
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="break-all text-accent underline-offset-4 hover:underline"
-                >
-                  {profile.email}
-                </a>
-              </p>
-            </dd>
+            <dd className="mt-3 text-base text-muted">{profile.location}</dd>
           </div>
           <div>
             <dt className="font-mono text-sm tracking-wide text-accent">

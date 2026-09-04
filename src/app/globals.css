@@ -8,6 +8,7 @@
   --muted: #3e4a5c;
   --line: rgb(40 55 80 / 0.18);
   --accent: #1d4e89;
+  --warm: #d27a3a;
   --star-color: #3a4d6b;
   --star-glow: rgb(70 100 150 / 0.55);
   --cursor-star: #24344c;
@@ -17,6 +18,7 @@
   --milky: rgb(255 214 180 / 0.08);
   --page-inset: 2rem;
   --content-pad: 1.5rem;
+  --page-max: none;
   --header-height: 4.5rem;
   --space-y: 0px;
   --pointer-x: 50%;
@@ -31,33 +33,66 @@ html.dark {
   --muted: #c5cedb;
   --line: rgb(186 196 210 / 0.32);
   --accent: #9ec4f5;
+  --warm: #d27a3a;
   --star-color: #f4f7fb;
   --star-glow: rgb(220 232 255 / 0.9);
   --cursor-star: #f6f8fb;
 }
 
+/* Large phones */
 @media (min-width: 640px) {
   :root {
-    --page-inset: 3rem;
-    --content-pad: 2rem;
-  }
-
-  html {
-    font-size: 18px;
+    --page-inset: 2.25rem;
+    --content-pad: 1.5rem;
   }
 }
 
+/* iPad portrait */
+@media (min-width: 768px) {
+  :root {
+    --page-inset: 2.5rem;
+    --content-pad: 1.5rem;
+  }
+}
+
+/* iPad landscape */
 @media (min-width: 1024px) {
   :root {
-    --page-inset: 4.5rem;
+    --page-inset: 3rem;
+    --content-pad: 1.75rem;
+  }
+}
+
+/* 13-inch laptops */
+@media (min-width: 1280px) {
+  :root {
+    --page-inset: 3.25rem;
+    --content-pad: 1.75rem;
+  }
+}
+
+/* 13-inch retina / 14-inch */
+@media (min-width: 1440px) {
+  :root {
+    --page-inset: 3.5rem;
+    --content-pad: 2rem;
+  }
+}
+
+/* 15-inch laptops */
+@media (min-width: 1680px) {
+  :root {
+    --page-inset: 4rem;
     --content-pad: 2.25rem;
   }
 }
 
-@media (min-width: 1280px) {
+/* Large desktops */
+@media (min-width: 1920px) {
   :root {
-    --page-inset: 5.5rem;
+    --page-inset: 4.5rem;
     --content-pad: 2.5rem;
+    --page-max: 120rem;
   }
 }
 
@@ -67,6 +102,7 @@ html.dark {
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-accent: var(--accent);
+  --color-warm: var(--warm);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -82,6 +118,20 @@ html {
 
 html.dark {
   color-scheme: dark;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+.page-column {
+  width: 100%;
+  max-width: var(--page-max);
+  min-width: 0;
+  margin-inline: auto;
+  padding-inline: calc(var(--page-inset) + var(--content-pad));
 }
 
 body,
@@ -373,7 +423,7 @@ html.dark .scroll-fly-moon {
 
   .scroll-fly {
     position: absolute;
-    left: calc(50vw - var(--page-inset) - var(--content-pad));
+    left: 50%;
     bottom: 1.6rem;
     margin: 0;
     translate: -50% 0;
@@ -401,7 +451,7 @@ html.dark .scroll-fly-moon {
 .resume-planet-b {
   width: 1.2rem;
   height: 0.9rem;
-  color: #d27a3a;
+  color: var(--warm);
 }
 
 .resume-planet-c {

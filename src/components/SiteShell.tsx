@@ -11,15 +11,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <ScrollProgress />
       <HashScroll />
       <Header />
-      <main
-        className="relative z-10 max-w-[70rem] min-w-0"
-        style={{
-          marginLeft: "var(--page-inset)",
-          marginRight: "var(--page-inset)",
-          paddingLeft: "var(--content-pad)",
-          paddingRight: "var(--content-pad)",
-        }}
-      >
+      <main className="page-column relative z-10">
         {children}
       </main>
     </>

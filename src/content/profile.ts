@@ -1,7 +1,7 @@
 export const profile = {
   name: "Charitha Raghavaraju",
   role: "AI & Machine Learning Engineer",
-  location: "Tampere, Finland",
+  location: "Aalborg, Denmark",
   email: "charitharaghavaraju@gmail.com",
   github: "https://github.com/charitharaghavaraju",
   githubHandle: "charitharaghavaraju",
@@ -9,9 +9,9 @@ export const profile = {
   resume: "/Charitha-Raghavaraju-Resume.pdf",
   resumeFileName: "Charitha-Raghavaraju-Resume.pdf",
   tagline:
-    "Machine learning researcher and engineer working across applied research and production AI.",
+    "Machine learning engineer working across applied research and production AI.",
   about: [
-    "Motivated machine learning researcher and engineer with an M.Sc. in signal processing and machine learning from Tampere University and experience spanning applied research and production AI. Contributed to research on automated audio captioning and sound event detection within the EU MARVEL project, resulting in peer-reviewed IEEE publications, alongside hands-on work developing, fine-tuning, and deploying deep learning systems.",
+    "Motivated machine learning engineer with an M.Sc. in signal processing and machine learning from Tampere University and experience spanning applied research and production AI. Contributed to research on automated audio captioning and sound event detection within the EU MARVEL project, resulting in peer-reviewed IEEE publications, alongside hands-on work developing, fine-tuning, and deploying deep learning systems.",
     "Comfortable across the full research cycle, from literature-driven problem formulation and dataset construction to model development and rigorous evaluation. Motivated to pursue doctoral research that advances machine learning methods and their real-world impact.",
   ],
   languages: [

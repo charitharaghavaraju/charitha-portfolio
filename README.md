@@ -2,7 +2,7 @@
 
 **Live site:** [https://charitha-raghavaraju.vercel.app](https://charitha-raghavaraju.vercel.app)
 
-Personal site for Charitha Raghavaraju, Machine Learning Engineer.
+Personal site for Charitha Raghavaraju, AI Engineer.
 
 ## Develop
 

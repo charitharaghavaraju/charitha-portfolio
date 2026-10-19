@@ -10,6 +10,17 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
   {
+    title: "AI Engineer",
+    company: "Ownlytic ApS · Liftra",
+    location: "Aalborg, Denmark",
+    start: "Nov 2026 ",
+    end: "Present",
+    tags: [],
+    bullets: [
+      
+    ],
+  },
+  {
     title: "AI Engineer Intern",
     company: "Spogen.ai",
     location: "Tampere, Finland",
